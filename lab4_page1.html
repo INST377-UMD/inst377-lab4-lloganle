@@ -1,0 +1,81 @@
+<html>
+    <head>
+        <title>INST377 - Lab 4</title>
+    </head>
+    <link rel = "stylesheet" href = "lab4_stylesheet.css">
+
+    <body>
+        <header>
+            <h1 id = "header" >INST377 - Lab 4 </h1>
+        </header>
+
+        <div class = "main">
+            <div class = "content">
+                <form name = "alertForm">
+                    <label for = "name">Name: </label>
+                    <input type = "text" id = "name" required>
+                    <button type = "button" onclick="hiAlert()">Alert Me</button>
+                </form>
+            </div>
+
+            <div class = "content">
+                <button type="button" onclick = "changePageColor()">Change Color</button>       
+            </div>
+
+
+            <div class = "content">
+                <form name = "validInput">
+                    <label for = "validInput">Text Tester: </label>
+                    <input type = "text" id = "validInput">
+                    <button type = "button" onclick = "validateText()">Validate Text</button>
+                </form>
+            </div>
+
+            <div class = "content">
+                <button type="button" onclick = "addText()">Add Text</button>
+            </div>
+        </div>
+
+
+        <script type = "text/javascript">
+            function hiAlert() {
+                let name = document.getElementById("name").value.trim();
+                if (name === "") {
+                    alert("Please enter your name!");
+                } else {
+                    console.log("Hello", name);
+                    alert("Hello " + name + "!");
+                }
+            }
+
+            function validateText(inputText) {
+                var validation = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+                
+                let testValid = document.getElementById("validInput").value;
+
+                if (testValid === "") {
+                    alert("Invalid input! Input cannot be empty.");
+                } else if (validation.test(testValid)) {
+                    alert("Invalid input! There is a special character.");
+                } else {
+                    return true;
+                }
+            }
+
+            function changePageColor(){
+
+                if (document.body.style.backgroundColor === "lightpink"){
+                    document.body.style.backgroundColor = "lavenderblush";
+                }
+                else{
+                    document.body.style.backgroundColor = "lightpink";
+                }
+            }
+
+            function addText(){
+                document.getElementById("header").textContent += "Adding Text ";
+            }
+        </script>
+
+    </body>
+</html>
